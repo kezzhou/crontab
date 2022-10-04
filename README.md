@@ -9,7 +9,7 @@ HHA 507 // Week 6 // Assignment 6
 
 ## In this example we want to pull down data from an API during given intervals: once a day at a random time, every sunday night at 10:00 PM, and once at the end of every quarter.
 
-## We can begin by writing our pulldown.py file. We choose to import os, sys and time for timestamping the txts that we will create. We import requests to pull down data from the API and json to visualize that data.
+## We can begin by writing our pulldown.py file. We choose to import os, sys and time for timestamping the txts that we will create. We import requests to pull down data from the API and json to visualize that data. Finally, we use pandas to put the data into a dataframe for csv importing into the local machine. Technically speaking, we could run the pandas section without the timestamps, but it is useful to have a log of each cron job run.
 
 ## The data API we have used can be found at: https://data.cms.gov/data-api/v1/dataset/137f90cb-ac53-4b3d-8358-e65cf64e03d3/data
 
@@ -33,4 +33,6 @@ HHA 507 // Week 6 // Assignment 6
 
 ## It is useful to find the path of python3 with 'which python3' and the path of various files in directories with 'pwd' after cding into them. 
 
-## In the case that there is a stray print command in the py file we are working with, we must provide a path for a new txt file to be created to execute that print command. For example, had we used a stray print command somewhere in our script, such as 'print('Hello')', a working cron script would look something like this: '00 22 * * 7 /usr/bin/python3 /home/kevin/crontab/pulldown.py > log.txt 2>&1 &'. Every time that the job was run based on the time we set, we would also generate a txt called log.txt with our executed print command in it ('Hello').
+## In the case that there is a stray print command in the py file we are working with, we must provide a path for a new txt file to be created to execute that print command. For example, had we used a stray print command somewhere in our script, such as 'print('Hello')', a working cron script would look something like this: '00 22 * * 7 /usr/bin/python3 /home/kevin/crontab/pulldown.py > log.txt 2>&1 &'. Every time that the job was run based on the time we set, we would also generate a txt called log.txt with our executed print command in it ('Hello'). This is also helpful as if your code does not work, it will transcribe the error on the log.txt for you to troubleshoot.
+
+## IMPORTANT: be sure to pip/pip3 install all requirements from the requirements.txt as your venv may not come with it.
