@@ -4,6 +4,7 @@ import sys
 import time
 import requests as rq ## pull api from web
 import json ## for visualization
+import pandas as pd
 
 
 
@@ -15,11 +16,15 @@ apiDataset = rq.get('https://data.cms.gov/data-api/v1/dataset/137f90cb-ac53-4b3d
 
 apiDataset = apiDataset.json() ## we then use json package to visualize api dataset for us
 
-data = apiDataset ## finally we print results
+apiDataset = pd.DataFrame(apiDataset)
+
+apiDataset.to_csv('./covidnursingdata.csv')
+
+data = apiDataset
 
 now = time.time() ## getting current time 
 
 nowStr = time.strftime("%Y-%m-%d_%H:%M:%S", time.localtime(now)) ## saving as string
 
 with open(cwd + '/pulldown_' + nowStr + '.txt', 'w') as f:
-    f.write(str(data)) ## creating new file 
+    f.write(str(data)) ## creating new file
