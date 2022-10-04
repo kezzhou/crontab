@@ -17,11 +17,9 @@ apiDataset = apiDataset.json() ## we then use json package to visualize api data
 
 data = apiDataset ## finally we print results
 
-data
-
 now = time.time() ## getting current time 
 
 nowStr = time.strftime("%Y-%m-%d_%H:%M:%S", time.localtime(now)) ## saving as string
 
-with open(cwd + '/testfile_' + nowStr + '.txt', 'w') as f:
+with open(cwd + '/pulldown_' + nowStr + '.txt', 'w') as f:
     f.write(str(data)) ## creating new file 
